@@ -31,6 +31,19 @@ class MainView extends StatefulWidget {
 }
 
 class _MainViewState extends State<MainView> {
+  late String title;
+
+  @override
+  void initState() {
+    super.initState();
+    title = widget.title;
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
   void goToExercise1() {
     Navigator.push(
         context, MaterialPageRoute(builder: (context) => const Exercise1()));
@@ -39,53 +52,62 @@ class _MainViewState extends State<MainView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Center(
-      child: Column(
-        children: <Widget>[
-          Container(
-            margin: const EdgeInsets.only(top: 35.0),
-            child: const Text("Ejercicios Flutter",
-                style: TextStyle(fontSize: 40, color: Colors.black87)),
-          ),
-          Container(
-              margin: const EdgeInsets.all(40),
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.inversePrimary,
-                  border: Border.all(width: 2, color: Colors.black87),
-                  borderRadius: const BorderRadius.all(Radius.circular(10)),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 5,
-                      blurRadius: 7,
-                      offset: const Offset(0, 3),
-                    )
-                  ]),
-              child: Padding(
-                padding: const EdgeInsets.only(top: 20, bottom: 20),
-                child: Column(
-                  children: <Widget>[
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        TextButton(
-                            onPressed: goToExercise1,
-                            child: const Text("Ejercicio 1",
-                                style: TextStyle(
-                                    fontSize: 20, color: Colors.black87))),
-                        // TextButton(
-                        //     onPressed:,
-                        //     child: const Text("Ejercicio 2",
-                        //         style: TextStyle(
-                        //             fontSize: 20, color: Colors.black87)))
-                      ],
-                    ),
-                  ],
-                ),
-              ))
-        ],
-      ),
+        body: SafeArea(
+      child: Padding(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            spacing: 40,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Text(title,
+                      style:
+                          const TextStyle(fontSize: 40, color: Colors.black87))
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Container(
+                      width: 400,
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).colorScheme.inversePrimary,
+                        border: Border.all(width: 2, color: Colors.black87),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(10)),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: 5,
+                            blurRadius: 7,
+                            offset: const Offset(0, 3),
+                          )
+                        ],
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(20),
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                TextButton(
+                                    onPressed: goToExercise1,
+                                    child: const Text("Ejercicio 1",
+                                        style: TextStyle(
+                                            fontSize: 20,
+                                            color: Colors.black87,
+                                            fontWeight: FontWeight.bold))),
+                              ],
+                            )
+                          ],
+                        ),
+                      ))
+                ],
+              )
+            ],
+          )),
     ));
   }
 }
