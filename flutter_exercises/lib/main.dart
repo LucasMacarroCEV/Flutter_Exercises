@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_exercises/exercise1.dart';
+import 'package:flutter_exercises/exercise2.dart';
 
 void main() {
   runApp(const FlutterExercisesApp());
@@ -49,6 +50,11 @@ class _MainViewState extends State<MainView> {
         context, MaterialPageRoute(builder: (context) => const Exercise1()));
   }
 
+  void goToExercise2() {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => const Exercise2()));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -95,6 +101,13 @@ class _MainViewState extends State<MainView> {
                                 TextButton(
                                     onPressed: goToExercise1,
                                     child: const Text("Ejercicio 1",
+                                        style: TextStyle(
+                                            fontSize: 20,
+                                            color: Colors.black87,
+                                            fontWeight: FontWeight.bold))),
+                                TextButton(
+                                    onPressed: goToExercise2,
+                                    child: const Text("Ejercicio 2",
                                         style: TextStyle(
                                             fontSize: 20,
                                             color: Colors.black87,
