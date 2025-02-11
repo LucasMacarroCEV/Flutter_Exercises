@@ -20,8 +20,6 @@ class _Exercise2ViewState extends State<Exercise2> {
 
   int currentTurn = 0;
   List<String> playerNames = [];
-  late String currentName;
-  List<int> shoots = [];
 
   @override
   void initState() {
@@ -210,8 +208,6 @@ class _Exercise2ViewState extends State<Exercise2> {
   void _onRouletteButtonPressed() {
     var bullet = getRandomNumber(0, 6);
     var shoot = getRandomNumber(0, 6);
-
-    print("$bullet -> $shoot");
 
     if (bullet == shoot) {
       resultText = "PUM! ${playerNames[currentTurn]} HA MUERTO";

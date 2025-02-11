@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_exercises/exercise1.dart';
-import 'package:flutter_exercises/exercise2.dart';
+import 'package:flutter_exercises/Exercises/exercise_1.dart';
+import 'package:flutter_exercises/Exercises/exercise_2.dart';
+import 'package:flutter_exercises/Exercises/exercise_3.dart';
+import 'package:flutter_exercises/Exercises/exercise_4.dart';
 
 void main() {
   runApp(const FlutterExercisesApp());
@@ -55,6 +57,16 @@ class _MainViewState extends State<MainView> {
         context, MaterialPageRoute(builder: (context) => const Exercise2()));
   }
 
+  void goToExercise3() {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => const Exercise3()));
+  }
+
+  void goToExercise4() {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => const Exercise4()));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -94,6 +106,7 @@ class _MainViewState extends State<MainView> {
                       child: Padding(
                         padding: const EdgeInsets.all(20),
                         child: Column(
+                          spacing: 20,
                           children: [
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -113,7 +126,26 @@ class _MainViewState extends State<MainView> {
                                             color: Colors.black87,
                                             fontWeight: FontWeight.bold))),
                               ],
-                            )
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                TextButton(
+                                    onPressed: goToExercise3,
+                                    child: const Text("Ejercicio 3",
+                                        style: TextStyle(
+                                            fontSize: 20,
+                                            color: Colors.black87,
+                                            fontWeight: FontWeight.bold))),
+                                TextButton(
+                                    onPressed: goToExercise4,
+                                    child: const Text("Ejercicio 4",
+                                        style: TextStyle(
+                                            fontSize: 20,
+                                            color: Colors.black87,
+                                            fontWeight: FontWeight.bold))),
+                              ],
+                            ),
                           ],
                         ),
                       ))
