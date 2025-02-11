@@ -4,6 +4,7 @@ import 'package:flutter_exercises/Exercises/exercise_2.dart';
 import 'package:flutter_exercises/Exercises/exercise_3.dart';
 import 'package:flutter_exercises/Exercises/exercise_4.dart';
 import 'package:flutter_exercises/Exercises/exercise_5.dart';
+import 'package:flutter_exercises/Exercises/exercise_6.dart';
 
 void main() {
   runApp(const FlutterExercisesApp());
@@ -71,6 +72,11 @@ class _MainViewState extends State<MainView> {
   void goToExercise5() {
     Navigator.push(
         context, MaterialPageRoute(builder: (context) => const Exercise5()));
+  }
+
+  void goToExercise6() {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => const Exercise6()));
   }
 
   @override
@@ -163,7 +169,7 @@ class _MainViewState extends State<MainView> {
                                             color: Colors.black87,
                                             fontWeight: FontWeight.bold))),
                                 TextButton(
-                                    onPressed: null,
+                                    onPressed: goToExercise6,
                                     child: const Text("Ejercicio 6",
                                         style: TextStyle(
                                             fontSize: 20,

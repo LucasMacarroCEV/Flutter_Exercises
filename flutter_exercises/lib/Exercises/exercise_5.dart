@@ -326,9 +326,9 @@ class _Exercise5ViewState extends State<Exercise5> {
     int currentLifeExpectancy = lifeExpentacy - age;
     int lifeExpentacyHours = (currentLifeExpectancy * 365) * 24;
     lifeExpentacyHours -=
-        (_sleepHoursSliderValue.round() * 365) * (currentLifeExpectancy - 10);
+        (_sleepHoursSliderValue.round() * 365) * currentLifeExpectancy;
     lifeExpentacyHours -=
-        (_workHoursSliderValue.round() * 365) * currentLifeExpectancy;
+        (_workHoursSliderValue.round() * 365) * (currentLifeExpectancy - 10);
 
     if ((lifeExpentacyHours / 24) < 0) {
       _resultText = "Suerte tienes de seguir viv@";

@@ -106,7 +106,7 @@ class _Exercise4ViewState extends State<Exercise4> {
                                         onPressed:
                                             _onCheckRomanNumberButtonPressed,
                                         tooltip: "TranslateNumber",
-                                        child: Icon(Icons.send),
+                                        child: const Icon(Icons.send),
                                       )
                                     ],
                                   ),
