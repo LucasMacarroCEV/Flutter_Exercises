@@ -121,9 +121,7 @@ class _Exercise3ViewState extends State<Exercise3> {
   void _onSetPhraseButtonPressed() {
     var currentPhrase = _phraseTF.text;
     var currentPhraseArray = splitPhrase(currentPhrase);
-    print(currentPhraseArray);
     var censoredPhraseArray = censor(currentPhraseArray);
-    print(censoredPhraseArray);
     var censoredPhrase = buildCensoredPhrase(censoredPhraseArray);
     _resultText = censoredPhrase;
     setState(() {});

@@ -1,5 +1,15 @@
 import 'package:flutter/material.dart';
 
+Map<String, int> romanNumerals = {
+  "I": 1,
+  "V": 5,
+  "X": 10,
+  "L": 50,
+  "C": 100,
+  "D": 500,
+  "M": 1000
+};
+
 class Exercise4 extends StatefulWidget {
   const Exercise4({super.key});
 
@@ -9,6 +19,9 @@ class Exercise4 extends StatefulWidget {
 
 class _Exercise4ViewState extends State<Exercise4> {
   late TextEditingController _numberTF;
+  String _errorText = "";
+  bool bError = false;
+  String _resultText = "";
 
   @override
   void initState() {
@@ -44,7 +57,7 @@ class _Exercise4ViewState extends State<Exercise4> {
                     const Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Text("Ejercicio 1",
+                        Text("Ejercicio 4",
                             style:
                                 TextStyle(fontSize: 40, color: Colors.black87))
                       ],
@@ -86,16 +99,38 @@ class _Exercise4ViewState extends State<Exercise4> {
                                           decoration: const InputDecoration(
                                               border: OutlineInputBorder(),
                                               labelText:
-                                                  "Introduce un número..."),
+                                                  "Introduce un número romano..."),
                                         ),
                                       ),
-                                      const FloatingActionButton(
-                                        onPressed: null,
-                                        tooltip: "AddNumber",
-                                        child: Icon(Icons.add),
+                                      FloatingActionButton(
+                                        onPressed:
+                                            _onCheckRomanNumberButtonPressed,
+                                        tooltip: "TranslateNumber",
+                                        child: Icon(Icons.send),
                                       )
                                     ],
                                   ),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      Text(_resultText,
+                                          style: const TextStyle(
+                                              fontSize: 20,
+                                              color: Colors.black87))
+                                    ],
+                                  ),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      Text(_errorText,
+                                          style: const TextStyle(
+                                              fontSize: 15,
+                                              fontStyle: FontStyle.italic,
+                                              color: Colors.red))
+                                    ],
+                                  )
                                 ],
                               ),
                             ))
@@ -107,5 +142,43 @@ class _Exercise4ViewState extends State<Exercise4> {
 
   void _onExitButtonPressed() {
     Navigator.pop(context);
+  }
+
+  void _onCheckRomanNumberButtonPressed() {
+    _resultText = "";
+    _errorText = "";
+    bError = false;
+    String romanNum = _numberTF.text;
+    for (var x in romanNum.characters) {
+      x = x.toUpperCase();
+      if (!romanNumerals.keys.contains(x)) {
+        bError = true;
+        _errorText = "Error: Introduce un número romano válido.";
+      }
+    }
+    if (!bError) {
+      _resultText = (romanNumberTranslator(romanNum)).toString();
+    }
+    setState(() {});
+  }
+
+  int romanNumberTranslator(String romanNum) {
+    var prevValue = 0;
+    var total = 0;
+
+    for (var char in romanNum.characters) {
+      char = char.toUpperCase();
+
+      var value = romanNumerals[char]!;
+
+      if (value > prevValue) {
+        total += value - 2 * prevValue;
+      } else {
+        total += value;
+      }
+
+      prevValue = value;
+    }
+    return total;
   }
 }
