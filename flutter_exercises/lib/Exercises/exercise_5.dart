@@ -36,7 +36,7 @@ class _Exercise5ViewState extends State<Exercise5> {
     Question("¿Acaricias muchos perros?", 11, -8)
   ];
   int questionsIndex = 0;
-  int lifeExpentacy = 80;
+  int lifeExpentacy = 83;
   int leisureDays = 0;
 
   @override
@@ -328,13 +328,13 @@ class _Exercise5ViewState extends State<Exercise5> {
     lifeExpentacyHours -=
         (_sleepHoursSliderValue.round() * 365) * currentLifeExpectancy;
     lifeExpentacyHours -=
-        (_workHoursSliderValue.round() * 365) * (currentLifeExpectancy - 10);
+        (_workHoursSliderValue.round() * 365) * (currentLifeExpectancy - 16);
 
     if ((lifeExpentacyHours / 24) < 0) {
       _resultText = "Suerte tienes de seguir viv@";
     } else {
       _resultText =
-          "Te quedan aproximadamente ${lifeExpentacyHours / 24} días de ocio";
+          "Te quedan aproximadamente ${(lifeExpentacyHours / 24).round()} días de ocio";
     }
     setState(() {});
   }

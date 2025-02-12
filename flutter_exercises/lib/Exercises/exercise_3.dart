@@ -94,16 +94,13 @@ class _Exercise3ViewState extends State<Exercise3> {
                                     )
                                   ],
                                 ),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    Text(_resultText,
+                                FittedBox(
+                                    alignment: Alignment.center,
+                                    fit: BoxFit.contain,
+                                    child: Text(_resultText,
                                         style: const TextStyle(
                                             fontSize: 20,
-                                            color: Colors.black87))
-                                  ],
-                                )
+                                            color: Colors.black87)))
                               ],
                             ),
                           ))

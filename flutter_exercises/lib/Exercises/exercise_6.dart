@@ -54,17 +54,17 @@ class _Exercise6ViewState extends State<Exercise6> {
     return Scaffold(
       body: Center(child: _widgetOptions.elementAt(_currentIndex)),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Color.fromRGBO(180, 180, 180, 1.0),
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.person,
-              color: Color.fromRGBO(10, 10, 10, 1),
+              Icons.assignment,
+              color: Colors.black87,
             ),
             label: "Salas de reuniones",
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.star, color: Color.fromRGBO(240, 180, 55, 1)),
+            icon: Icon(Icons.assignment_turned_in, color: Colors.black87),
             label: "Reservas",
           )
         ],
